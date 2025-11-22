@@ -61,9 +61,8 @@
         <p class="small" style="margin-top:8px">Pagamento via M-Pesa, mMola ou M-BIM • Envie comprovativo via WhatsApp e receba o PDF.</p>
       </div>
 
-      <div class="cover" aria-hidden="true">
-        <!-- IMAGEM PREMIUM (local path fornecido) -->
-        <img src="/mnt/data/A_digital_graphic_payment_instruction_graphic_prom.png" alt="Arte de pagamento - Premium">
+      <div class="cover">
+        <img src="promo.png" alt="Arte de pagamento - Premium">
       </div>
     </div>
 
@@ -72,7 +71,8 @@
       <div class="card">
         <p class="small">Faz o pagamento para uma das contas abaixo e, em seguida, envia o comprovativo pelo WhatsApp para notificar a compra. Nós enviaremos o e-book imediatamente para o WhatsApp ou email que indicaste.</p>
 
-        <div class="payment-list" aria-hidden="false">
+        <div class="payment-list">
+
           <div class="pay-row">
             <div class="pay-left">
               <strong>M-Pesa</strong>
@@ -99,32 +99,37 @@
 
         </div>
 
-        <p class="how"><strong>Passos:</strong> 1) Paga 499 MT usando um dos números acima. 2) Guarda screenshot do comprovativo. 3) Clica em "Enviar comprovativo" e anexa o screenshot no WhatsApp.</p>
+        <p class="how">
+          <strong>Passos:</strong><br>
+          1) Paga 499 MT num dos números acima.<br>
+          2) Guarda o screenshot do comprovativo.<br>
+          3) Clica em “Enviar comprovativo” e anexa no WhatsApp.
+        </p>
       </div>
     </div>
 
-    <div class="section" style="margin-top:18px">
+    <div class="section">
       <h2 style="color:var(--gold);margin:0 0 8px">Detalhes rápidos</h2>
       <div class="card small">
-        <p style="margin:0"><strong>Valor:</strong> 499 MT • <strong>Titular das contas:</strong> Jean Charles</p>
-        <p style="margin:0">Após envio do comprovativo: enviaremos o e-book imediatamente para o número de WhatsApp ou e-mail que indicaste.</p>
+        <p><strong>Valor:</strong> 499 MT • <strong>Titular:</strong> Jean Charles</p>
+        <p>Após confirmar o comprovativo, enviamos o PDF imediatamente.</p>
       </div>
     </div>
   </div>
 
   <!-- Modal -->
   <div class="modal-backdrop" id="modal">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <h3 id="modal-title" style="margin:0 0 8px">Enviar comprovativo e notificar</h3>
-      <p class="small">Preenche os dados abaixo e clica em "Abrir WhatsApp" — vais poder anexar o screenshot do pagamento e enviar-nos a notificação.</p>
+    <div class="modal">
+      <h3 id="modal-title">Enviar comprovativo e notificar</h3>
+      <p class="small">Preenche os dados e depois clica “Abrir WhatsApp”.</p>
 
       <div class="field">
-        <label for="buyer-name" class="small">O teu nome completo</label>
+        <label class="small">O teu nome completo</label>
         <input id="buyer-name" type="text" placeholder="Ex.: Maria da Silva">
       </div>
 
       <div class="field">
-        <label for="contact-prefer" class="small">Quero receber o e-book por:</label>
+        <label class="small">Quero receber o e-book por:</label>
         <select id="contact-prefer">
           <option value="whatsapp">WhatsApp (recomendado)</option>
           <option value="email">Email</option>
@@ -132,17 +137,17 @@
       </div>
 
       <div class="field" id="whatsapp-field">
-        <label class="small" for="buyer-whatsapp">Número de WhatsApp (para receber o e-book)</label>
+        <label class="small">Número de WhatsApp</label>
         <input id="buyer-whatsapp" type="text" placeholder="+2588XXXXXXXX">
       </div>
 
       <div class="field" id="email-field" style="display:none;">
-        <label class="small" for="buyer-email">Email (se preferes receber por email)</label>
+        <label class="small">Email</label>
         <input id="buyer-email" type="email" placeholder="teu-email@exemplo.com">
       </div>
 
       <div class="field">
-        <label class="small" for="method">Já fiz o pagamento via:</label>
+        <label class="small">Já fiz o pagamento via:</label>
         <select id="method">
           <option value="M-Pesa">M-Pesa — 847363214</option>
           <option value="mMola">mMola — 879071271</option>
@@ -151,101 +156,79 @@
       </div>
 
       <div class="actions">
-        <button class="btn" id="open-wa">Abrir WhatsApp & Enviar Notificação</button>
+        <button class="btn" id="open-wa">Abrir WhatsApp & Enviar</button>
         <button class="btn ghost" id="close-modal">Cancelar</button>
       </div>
-
-      <p class="small" style="margin-top:8px">Ao abrir o WhatsApp, anexa o screenshot do pagamento e envia. Nós confirmamos e enviamos o PDF imediatamente.</p>
     </div>
   </div>
 
   <footer>
-    © <span id="year"></span> Ebook — 12 Maneiras Reais. Titular: Jean Charles. Contacto: Trunkstruly@gmail.com
+    © <span id="year"></span> Ebook — 12 Maneiras Reais. Titular: Jean Charles.
   </footer>
 
   <script>
-    // Configurações finais (já colocadas)
     const SELLER_WHATSAPP = "+258847363214";
-    const SELLER_EMAIL = "Trunkstruly@gmail.com";
     const MPESA = "847363214";
     const MMOLA = "879071271";
     const MBIM = "187092728";
     const ACCOUNT_HOLDER = "Jean Charles";
+
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Modal controls
-    const modal = document.getElementById('modal');
-    document.getElementById('open-pay').addEventListener('click', function(e){
-      e.preventDefault();
-      modal.style.display = "flex";
-    });
-    document.getElementById('close-modal').addEventListener('click', function(e){
-      e.preventDefault();
-      modal.style.display = "none";
-    });
+    document.getElementById('open-pay').onclick = () => {
+      document.getElementById('modal').style.display = "flex";
+    };
 
-    // Toggle contact fields
-    const contactPrefer = document.getElementById('contact-prefer');
-    contactPrefer.addEventListener('change', function(){
-      if(contactPrefer.value === "whatsapp"){
+    document.getElementById('close-modal').onclick = () => {
+      document.getElementById('modal').style.display = "none";
+    };
+
+    document.getElementById('contact-prefer').onchange = function() {
+      if (this.value === "whatsapp") {
         document.getElementById('whatsapp-field').style.display = "block";
         document.getElementById('email-field').style.display = "none";
       } else {
         document.getElementById('whatsapp-field').style.display = "none";
         document.getElementById('email-field').style.display = "block";
       }
+    };
+
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.onclick = () => {
+        const val = btn.dataset.copy;
+        navigator.clipboard.writeText(val);
+        btn.textContent = "Copiado ✓";
+        setTimeout(() => btn.textContent = "Copiar", 1500);
+      };
     });
 
-    // Copy buttons
-    document.querySelectorAll('.copy-btn').forEach(btn=>{
-      btn.addEventListener('click', function(){
-        const val = btn.getAttribute('data-copy');
-        navigator.clipboard.writeText(val).then(()=>{
-          const prev = btn.textContent;
-          btn.textContent = "Copiado ✓";
-          setTimeout(()=> btn.textContent = prev, 1600);
-        }).catch(()=> {
-          alert("Não foi possível copiar. Por favor copia manualmente: " + val);
-        });
-      });
-    });
-
-    // Build whatsapp send link from form
-    document.getElementById('open-wa').addEventListener('click', function(e){
-      e.preventDefault();
-      const buyerName = (document.getElementById('buyer-name').value || "").trim();
+    document.getElementById('open-wa').onclick = () => {
+      const buyerName = document.getElementById('buyer-name').value.trim();
       const prefer = document.getElementById('contact-prefer').value;
-      const buyerWhatsapp = (document.getElementById('buyer-whatsapp').value || "").trim();
-      const buyerEmail = (document.getElementById('buyer-email').value || "").trim();
+      const buyerWhatsapp = document.getElementById('buyer-whatsapp').value.trim();
+      const buyerEmail = document.getElementById('buyer-email').value.trim();
       const method = document.getElementById('method').value;
 
-      if(!buyerName){
-        alert("Por favor escreve o teu nome para procedermos.");
-        return;
-      }
-      if(prefer === "whatsapp" && !buyerWhatsapp){
-        alert("Por favor indica o teu número de WhatsApp para onde queres receber o e-book.");
-        return;
-      }
-      if(prefer === "email" && !buyerEmail){
-        alert("Por favor indica o teu email para onde queres receber o e-book.");
-        return;
-      }
+      if (!buyerName) return alert("Indica o teu nome.");
+      if (prefer === "whatsapp" && !buyerWhatsapp) return alert("Indica o número de WhatsApp.");
+      if (prefer === "email" && !buyerEmail) return alert("Indica o email.");
 
-      let msg = "Olá! Já efectuei o pagamento do ebook (499 MT).\\n";
-      msg += "Método: " + method + "\\n";
-      msg += "Para: " + (method === "M-Pesa" ? MPESA : (method === "mMola" ? MMOLA : MBIM)) + "\\n";
-      msg += "Titular: " + ACCOUNT_HOLDER + "\\n";
-      msg += "Nome: " + buyerName + "\\n";
-      if(prefer === "whatsapp") msg += "Por favor enviar o e-book para o WhatsApp: " + buyerWhatsapp + "\\n";
-      else msg += "Por favor enviar o e-book para o email: " + buyerEmail + "\\n";
-      msg += "Vou enviar o comprovativo (screenshot) neste chat. Obrigado.";
+      let msg = "Olá! Já efectuei o pagamento do ebook (499 MT).%0A";
+      msg += "Método: " + method + "%0A";
+      msg += "Para: " + (method === "M-Pesa" ? MPESA : (method === "mMola" ? MMOLA : MBIM)) + "%0A";
+      msg += "Titular: " + ACCOUNT_HOLDER + "%0A";
+      msg += "Nome: " + buyerName + "%0A";
+      msg += (prefer === "whatsapp"
+        ? "Receber no WhatsApp: " + buyerWhatsapp
+        : "Receber no email: " + buyerEmail
+      ) + "%0A";
+      msg += "Vou enviar o comprovativo aqui. Obrigado.";
 
-      const seller = SELLER_WHATSAPP.replace(/\\+/g,'');
-      const waUrl = "https://wa.me/" + seller + "?text=" + encodeURIComponent(msg);
-      window.open(waUrl, "_blank");
-      modal.style.display = "none";
-    });
+      const wa = "https://wa.me/" + SELLER_WHATSAPP.replace("+", "") + "?text=" + msg;
+
+      window.open(wa, "_blank");
+      document.getElementById('modal').style.display = "none";
+    };
   </script>
 </body>
 </html>
