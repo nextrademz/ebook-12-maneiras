@@ -6,7 +6,6 @@
 <title>12 Maneiras Reais — Ebook</title>
 <meta name="description" content="Guia prático para ganhar dinheiro online em Moçambique — Pagamento 499 MT. Envie comprovativo via WhatsApp."/>
 <style>
-  /* ---------- Vars ---------- */
   :root{
     --bg:#07121a;
     --glass: rgba(255,255,255,0.04);
@@ -18,7 +17,6 @@
     --radius:12px;
     --card-pad:20px;
   }
-  /* ---------- Reset & layout ---------- */
   *{box-sizing:border-box}
   body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(180deg,#06101a 0%, #07131b 100%);color:var(--white);-webkit-font-smoothing:antialiased}
   .container{max-width:var(--maxW);margin:18px auto;padding:18px}
@@ -26,7 +24,7 @@
   h1,h2{color:var(--gold);margin:0 0 10px 0}
   p{color:var(--muted);margin:0 0 12px 0}
   a{color:inherit}
-  /* ---------- Premium flag background ---------- */
+  /* HERO + bandeira de fundo (usa promo.png que TU subiste) */
   .hero-wrap{
     position:relative;
     border-radius:16px;
@@ -38,13 +36,14 @@
     background:
       linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.35));
   }
-  /* flag overlay using your local image */
   .hero-wrap::before{
     content:"";
     position:absolute;inset:0;
-    background-image: url("/mnt/data/A_digital_graphic_payment_instruction_graphic_prom.png");
+    /* <<< USAR promo.png (arquivo no repositório) >>> */
+    background-image: url("promo.png");
     background-size:cover;background-position:center;
-    opacity:0.14;filter:grayscale(0.1) saturate(0.9);
+    /* aumenta um pouco a opacidade para ser visível mas ainda leve */
+    opacity:0.22;filter:grayscale(0.05) saturate(0.95);
     z-index:0;
   }
   .hero{position:relative;z-index:1;display:flex;flex-wrap:wrap;align-items:center;gap:18px;width:100%}
@@ -53,7 +52,6 @@
   .cover{border-radius:10px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.04)}
   .cover img{display:block;width:100%;height:100%;object-fit:cover}
   .price-badge{background:linear-gradient(90deg,var(--gold),#f2d27a);color:#06121a;padding:10px 14px;border-radius:10px;font-weight:800;display:inline-block}
-  /* CTA buttons with subtle animation */
   .cta-row{margin-top:12px;display:flex;gap:12px;flex-wrap:wrap}
   .btn{
     background:linear-gradient(180deg,var(--accent),#067033);
@@ -65,37 +63,26 @@
   .btn:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(11,122,58,0.18)}
   .btn.ghost{background:transparent;border:2px solid rgba(255,255,255,0.06);color:var(--white)}
   .small{font-size:13px;color:var(--muted)}
-  /* Features grid */
   .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:16px}
   .feature{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));padding:12px;border-radius:10px}
-  /* Bonus box */
   .bonus{background:linear-gradient(90deg, rgba(212,175,55,0.08), rgba(255,255,255,0.01));border:1px solid rgba(212,175,55,0.12);padding:14px;border-radius:10px}
-  /* Testimonials */
   .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
   blockquote{background:rgba(255,255,255,0.02);padding:12px;border-left:4px solid rgba(212,175,55,0.9);border-radius:8px;color:#f6f6f4;margin:0}
-  /* Comparison table */
   .compare{width:100%;border-collapse:collapse;margin-top:12px}
   .compare th,.compare td{padding:12px;border-bottom:1px solid rgba(255,255,255,0.03);text-align:left;color:var(--muted)}
   .compare th{color:var(--gold);background:rgba(0,0,0,0.03)}
   .badge-ok{background:rgba(11,122,58,0.12);color:var(--accent);padding:6px 8px;border-radius:8px;font-weight:700}
-  .badge-no{opacity:0.6;color:#f87171}
-  /* Purchase area */
   .purchase{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap;margin-top:12px}
   .pay-list{min-width:240px;flex:1 1 300px}
   .pay-row{display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:8px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);margin-bottom:8px}
   .copy-btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:8px;color:var(--white);cursor:pointer}
-  /* Countdown */
   .countdown{display:inline-block;background:linear-gradient(90deg,#2a6b2a,#0b7a3a);padding:8px 12px;border-radius:10px;font-weight:800;color:#fff}
-  /* "Quem sou eu" */
   .about{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
   .about img{width:110px;border-radius:10px;object-fit:cover;border:2px solid rgba(255,255,255,0.04)}
-  /* FAQ */
   .faq{margin-top:12px}
   .faq .q{font-weight:700;margin-top:10px}
   .faq .a{color:var(--muted);margin-top:6px}
-  /* Footer */
   footer{margin-top:28px;padding:18px;text-align:center;color:var(--muted);font-size:14px;border-top:1px solid rgba(255,255,255,0.03)}
-  /* Responsive */
   @media(max-width:860px){
     .hero{flex-direction:column}
     .hero-right{width:100%}
@@ -130,7 +117,8 @@
 
       <div class="hero-right">
         <div class="cover">
-          <img src="/mnt/data/A_digital_graphic_payment_instruction_graphic_prom.png" alt="Capa premium">
+          <!-- usa promo.png (vê se está na raiz do repo) -->
+          <img src="promo.png" alt="Capa premium">
         </div>
       </div>
     </div>
@@ -200,7 +188,8 @@
   <!-- QUEM SOU EU -->
   <section class="card about" aria-label="Quem sou eu">
     <div style="flex:0 0 120px">
-      <img src="/mnt/data/A_digital_graphic_payment_instruction_graphic_prom.png" alt="Jean Charles (foto)">
+      <!-- usa promo.png como placeholder de foto (ou substitui por foto real depois) -->
+      <img src="promo.png" alt="Jean Charles (foto)">
     </div>
     <div>
       <h2>Quem sou eu</h2>
@@ -270,43 +259,36 @@
 
 </div>
 
-<!-- ---------- SCRIPTS ---------- -->
 <script>
-  // Basic config
+  // Configs
   const SELLER_WHATSAPP = "+258847363214";
   const MPESA = "847363214";
   const MMOLA = "879071271";
   const MBIM = "187092728";
   const ACCOUNT_HOLDER = "Jean Charles";
 
-  // Countdown - set sale end date (YYYY, M-1, D, H, M, S) local timezone
-  // Edit the date below to the promotion end you want.
-  const SALE_END = new Date(new Date().getTime() + 3*24*60*60*1000); // 3 days from now (example)
+  // Countdown (3 dias por defeito)
+  const SALE_END = new Date(new Date().getTime() + 3*24*60*60*1000);
   function updateCountdown(){
     const now = new Date();
     const diff = SALE_END - now;
-    if(diff <= 0){
-      document.getElementById('countdown').textContent = "Promoção terminada";
-      return;
-    }
+    if(diff <= 0){ document.getElementById('countdown').textContent = "Promoção terminada"; return; }
     const days = Math.floor(diff / (1000*60*60*24));
     const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
     const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
     const secs = Math.floor((diff % (1000*60)) / 1000);
     document.getElementById('countdown').textContent = `${days}d ${hours}h ${mins}m ${secs}s`;
   }
-  updateCountdown();
-  setInterval(updateCountdown,1000);
+  updateCountdown(); setInterval(updateCountdown,1000);
 
-  // Year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Modal-like quick instructions
+  // Instruções
   document.getElementById('btn-instr').addEventListener('click',function(){
     alert("1) Escolhe um método (M-Pesa / mMola / BIM)\n2) Paga 499 MT para o número respetivo\n3) Guarda screenshot\n4) Clica 'Enviar comprovativo via WhatsApp' e anexa o screenshot\n5) Recebes o PDF em até 30 minutos.");
   });
 
-  // Copy buttons
+  // Copiar
   document.querySelectorAll('.copy-btn').forEach(btn=>{
     btn.addEventListener('click',function(){
       const v = btn.getAttribute('data-copy');
@@ -318,7 +300,7 @@
     });
   });
 
-  // CTA handlers - open modal-like prompt to capture buyer details then open WA
+  // Prompt + whatsapp flow
   function openWhatsAppPrompt(prefDefault){
     const name = prompt("Nome completo (ex.: Maria da Silva):");
     if(!name) return alert("Precisamos do teu nome para concluir.");
@@ -344,16 +326,13 @@
   document.getElementById('final-buy').addEventListener('click',()=> openWhatsAppPrompt('whatsapp'));
   document.getElementById('btn-wa').addEventListener('click',()=> window.open("https://wa.me/"+SELLER_WHATSAPP.replace("+","")+"?text="+encodeURIComponent("Olá, já efectuei o pagamento do ebook (499 MT). Vou enviar o comprovativo."), "_blank"));
 
-  // Button hover micro-animations (for accessibility & subtlety)
+  // small hover/keyboard accessibility
   document.querySelectorAll('.btn').forEach(b=>{
     b.addEventListener('mouseenter',()=> b.style.transform = 'translateY(-4px) scale(1.01)');
     b.addEventListener('mouseleave',()=> b.style.transform = '');
     b.addEventListener('focus',()=> b.style.outline = '2px solid rgba(212,175,55,0.28)');
     b.addEventListener('blur',()=> b.style.outline = 'none');
   });
-
-  // Accessibility: ensure images have alt text & links keyboard accessible (done in markup)
-
 </script>
 </body>
 </html>
